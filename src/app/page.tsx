@@ -164,10 +164,12 @@ export default function Home() {
                 focusing on clean code and intuitive user interfaces.
               </p>
               <div className="flex gap-4 animate-fade-in-delay-3">
+               <Link href="#projects">> 
                 <Button 
                   variant="default" 
                   className="bg-purple-600 hover:bg-purple-700 transform hover:scale-105 transition-all"
                 >
+               </Link>   
                   View Projects
                 </Button>
                 <a
