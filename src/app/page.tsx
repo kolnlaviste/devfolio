@@ -93,9 +93,7 @@ export default function Home() {
       title: "Knowledge Base Tool",
       description: "An internal tool that lets Elinnov employees easily find, create, and share company knowledge in one place.",
       technologies: ["React.js", "Redux", ".NET", "MongoDB", "ElasticSearch"],
-      image: "/projects/knowledge-base-tool.jpg", // Add your image to public/projects/
-      github: "https://github.com/yourusername/portfolio",
-      demo: "https://your-portfolio.com"
+      image: "/projects/knowledge-base-tool.jpg", 
     },
     // Add more projects as needed
   ];
@@ -170,7 +168,7 @@ export default function Home() {
                 className="bg-purple-600 hover:bg-purple-700 transform hover:scale-105 transition-all"
                 >
                 View Projects
-                </Link>
+                </Link>     
                </Button>       
                 <a
                   href="/assets/resume.pdf"
@@ -333,37 +331,21 @@ export default function Home() {
                         
                         <div className="flex gap-3">
                           {project.github && (
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex-1"
-                            >
-                              <Button 
-                                variant="outline" 
-                                size="sm"
-                                className="border-purple-800 hover:bg-purple-900/20 w-full"
-                              >
-                                View Code
-                              </Button>
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1">
+                            <Button variant="outline" size="sm" className="border-purple-800 hover:bg-purple-900/20 w-full">
+                              View Code
+                            </Button>
                             </a>
-                          )}
+                          )}            
+
                           {project.demo && (
-                            <a
-                              href={project.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex-1"
-                            >
-                              <Button 
-                                variant="default" 
-                                size="sm"
-                                className="bg-purple-600 hover:bg-purple-700 w-full"
-                              >
+                            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex-1">
+                              <Button variant="default" size="sm" className="bg-purple-600 hover:bg-purple-700 w-full">
                                 Live Demo
                               </Button>
                             </a>
                           )}
+
                         </div>
                       </div>
                     </div>
