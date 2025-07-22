@@ -95,6 +95,14 @@ export default function Home() {
       technologies: ["React.js", "Redux", ".NET", "MongoDB", "ElasticSearch"],
       image: "/projects/knowledge-base-tool.jpg", 
     },
+    {
+      title: "HireLink",
+      description: "HireLink is a job board platform built with Next.js, Node.js, and PostgreSQL. It features job listings, company profiles, and search/filter tools to connect employees and job seekers efficiently.",
+      technologies: ["Next.js", "Node.js", "PostgreSQL", "TailwindCSS", "Headless UI"],
+      image: "/projects/hirelink.jpg",
+      github: "https://github.com/kolnlaviste/HireLink",
+      demo: "https://hirelink.vercel.app/",
+    }
     // Add more projects as needed
   ];
 
