@@ -69,7 +69,7 @@ export default function Home() {
       { name: 'WordPress', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg' },
       { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
       { name: 'Microsoft Tools', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg' },
-      { name: 'Android Studio', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg'},
+      { name: 'Android Studio', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg' },
     ],
     learning: [
       { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
@@ -93,7 +93,7 @@ export default function Home() {
       title: "Knowledge Base Tool",
       description: "An internal tool that lets Elinnov employees easily find, create, and share company knowledge in one place.",
       technologies: ["React.js", "Redux", ".NET", "MongoDB", "ElasticSearch"],
-      image: "/projects/knowledge-base-tool.jpg", 
+      image: "/projects/knowledge-base-tool.jpg",
     },
     {
       title: "HireLink",
@@ -139,8 +139,8 @@ export default function Home() {
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
     },
     exit: { opacity: 0, y: 20 }
@@ -152,7 +152,7 @@ export default function Home() {
       <main className="min-h-screen bg-black relative overflow-hidden">
         {/* Global background elements */}
         <div className="fixed inset-0 bg-gradient-to-br from-black via-purple-950/10 to-black pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 relative">
           {/* Hero Section */}
           <section id="hero" className="h-screen flex items-center justify-center pt-16 relative">
@@ -170,21 +170,21 @@ export default function Home() {
                 focusing on clean code and intuitive user interfaces.
               </p>
               <div className="flex gap-4 animate-fade-in-delay-3">
-               <Button asChild>
-                <Link 
-                href="#projects" 
-                className="bg-purple-600 hover:bg-purple-700 transform hover:scale-105 transition-all"
-                >
-                View Projects
-                </Link>     
-               </Button>       
+                <Button asChild>
+                  <Link
+                    href="#projects"
+                    className="bg-purple-600 hover:bg-purple-700 transform hover:scale-105 transition-all"
+                  >
+                    View Projects
+                  </Link>
+                </Button>
                 <a
                   href="/assets/resume.pdf"
                   download="koln-laviste-resume.pdf"
                   className="inline-flex"
                 >
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="border-purple-500 hover:bg-purple-950/50 transform hover:scale-105 transition-all group"
                   >
                     <span className="flex items-center gap-2">
@@ -205,7 +205,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text">
                 Skills & Technologies
               </h2>
-              
+
               {/* Filter Buttons */}
               <div className="flex flex-wrap justify-center gap-4 mb-16">
                 {filterButtons.map((button) => (
@@ -214,8 +214,8 @@ export default function Home() {
                     variant={activeCategory === button.value ? "default" : "outline"}
                     onClick={() => setActiveCategory(button.value as typeof activeCategory)}
                     className={`
-                      ${activeCategory === button.value 
-                        ? 'bg-purple-600 hover:bg-purple-700' 
+                      ${activeCategory === button.value
+                        ? 'bg-purple-600 hover:bg-purple-700'
                         : 'border-purple-800 text-purple-300 hover:bg-purple-900/20'
                       }
                       transform hover:scale-105 transition-all
@@ -251,10 +251,10 @@ export default function Home() {
                             className="group flex flex-col items-center justify-center gap-3 p-4 rounded-lg bg-black/40 border border-purple-900/50 hover:border-purple-500 transition-all aspect-square w-full"
                             whileHover={{ scale: 1.05 }}
                           >
-                            <motion.div 
+                            <motion.div
                               className="w-12 h-12 flex items-center justify-center"
                               whileHover={{ rotate: 360, scale: 1.1 }}
-                              transition={{ 
+                              transition={{
                                 duration: 0.6,
                                 type: "spring",
                                 stiffness: 200,
@@ -268,7 +268,7 @@ export default function Home() {
                               />
                             </motion.div>
                             {category !== 'all' && (
-                              <motion.span 
+                              <motion.span
                                 className="text-sm text-gray-400 group-hover:text-purple-300 transition-colors text-center"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -291,12 +291,12 @@ export default function Home() {
           <section id="projects" className="py-32 relative">
             <div className="absolute -top-32 left-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl animate-pulse" />
-            
+
             <div className="relative z-10">
               <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text">
                 Featured Projects
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {projects.map((project, index) => (
                   <motion.div
@@ -319,11 +319,11 @@ export default function Home() {
                       <h3 className="text-lg font-semibold text-purple-200">
                         {project.title}
                       </h3>
-                      
+
                       <p className="text-gray-400 text-sm flex-grow">
                         {project.description}
                       </p>
-                      
+
                       <div className="space-y-3">
                         <div className="flex flex-wrap gap-1.5">
                           {project.technologies.map((tech) => (
@@ -336,15 +336,15 @@ export default function Home() {
                             </Badge>
                           ))}
                         </div>
-                        
+
                         <div className="flex gap-3">
                           {project.github && (
                             <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1">
-                            <Button variant="outline" size="sm" className="border-purple-800 hover:bg-purple-900/20 w-full">
-                              View Code
-                            </Button>
+                              <Button variant="outline" size="sm" className="border-purple-800 hover:bg-purple-900/20 w-full">
+                                View Code
+                              </Button>
                             </a>
-                          )}            
+                          )}
 
                           {project.demo && (
                             <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex-1">
@@ -372,8 +372,8 @@ export default function Home() {
               </h2>
               <div className="max-w-3xl mx-auto space-y-8">
                 {experiences.map((exp, index) => (
-                  <motion.div 
-                    key={index} 
+                  <motion.div
+                    key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.2 }}
@@ -403,24 +403,24 @@ export default function Home() {
                   </p>
                   <div className="flex gap-4">
                     <Link href="mailto:roward18@gmail.com">
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         className="border-purple-800 text-purple-300 hover:bg-purple-900/20 transform hover:scale-105 transition-all"
                       >
                         Email Me
                       </Button>
                     </Link>
                     <Link href="https://github.com/kolnlaviste" target="_blank">
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         className="border-purple-800 text-purple-300 hover:bg-purple-900/20 transform hover:scale-105 transition-all"
                       >
                         GitHub
                       </Button>
                     </Link>
                     <Link href="https://www.linkedin.com/in/koln-laviste" target="_blank">
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         className="border-purple-800 text-purple-300 hover:bg-purple-900/20 transform hover:scale-105 transition-all"
                       >
                         LinkedIn
