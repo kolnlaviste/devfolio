@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/header";
 import Footer from "@/components/footer"
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Import useEffect
 import { motion, AnimatePresence } from "framer-motion";
 import { Download } from "lucide-react";
 
@@ -28,16 +28,29 @@ type Project = {
   title: string;
   description: string;
   technologies: string[];
-  image: string;  // Changed from optional to required
+  image: string;   // Changed from optional to required
   github?: string;
   demo?: string;
 };
 
 export default function Home() {
-  // Update type definition for activeCategory
   const [activeCategory, setActiveCategory] = useState<'all' | keyof SkillCategories>('all');
 
-  // Add type annotation for skills
+  // New state for the animated job title
+  const jobTitles = ["Jr. Full Stack Developer", "Frontend Developer", "Web Developer"]; // Add more titles if you like!
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+
+  // useEffect to handle the job title animation interval
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
+    }, 3000); // Change title every 3 seconds (3000 milliseconds)
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, [jobTitles.length]); // Re-run effect if jobTitles length changes (unlikely, but good practice)
+
+
   const skills: SkillCategories = {
     languages: [
       { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
@@ -115,16 +128,13 @@ export default function Home() {
     { name: 'Learning', value: 'learning' },
   ];
 
-  // Update getFilteredSkills with proper typing
   const getFilteredSkills = (): [string, Skill[]][] => {
     if (activeCategory === 'all') {
-      // Combine all skills into a single array for the 'all' view
       return [['all', Object.values(skills).flat()]];
     }
     return [[activeCategory, skills[activeCategory]]];
   };
 
-  // First, update your variants definitions
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -162,9 +172,20 @@ export default function Home() {
               <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text animate-fade-in">
                 Koln Roward Laviste
               </h1>
-              <h2 className="text-xl md:text-2xl text-purple-200/80 animate-fade-in-delay">
-                Jr. Full Stack Developer
-              </h2>
+              {/* Animated Job Title */}
+              <AnimatePresence mode="wait"> {/* `mode="wait"` ensures one animation finishes before the next starts */}
+                <motion.h2
+                  key={jobTitles[currentTitleIndex]} // Key is crucial for AnimatePresence to detect content change
+                  initial={{ opacity: 0, y: -10 }} // Start slightly above and invisible
+                  animate={{ opacity: 1, y: 0 }}   // Animate to visible and original position
+                  exit={{ opacity: 0, y: 10 }}     // Exit by fading out and moving slightly down
+                  transition={{ duration: 0.5 }}   // Animation duration
+                  className="text-xl md:text-2xl text-purple-200/80"
+                >
+                  {jobTitles[currentTitleIndex]}
+                </motion.h2>
+              </AnimatePresence>
+
               <p className="max-w-2xl text-gray-400 animate-fade-in-delay-2">
                 I craft digital experiences with modern web technologies,
                 focusing on clean code and intuitive user interfaces.
@@ -198,11 +219,11 @@ export default function Home() {
           </section>
 
           {/* Skills Section */}
-          <section id="skills" className="py-32 relative">
+          <section id="skills" className="py-20 lg:py-28 relative">
             <div className="absolute -top-32 right-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl animate-pulse" />
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-12 lg:mb-16 bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text">
                 Skills & Technologies
               </h2>
 
@@ -265,6 +286,8 @@ export default function Home() {
                                 src={skill.icon}
                                 alt={skill.name}
                                 className="w-full h-full object-contain filter group-hover:brightness-125 transition-all"
+                                width={48} // Add explicit width and height for Image component
+                                height={48}
                               />
                             </motion.div>
                             {category !== 'all' && (
@@ -287,86 +310,83 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Projects Section */}
-          <section id="projects" className="py-20 lg:py-28 relative overflow-hidden"> {/* Reduced vertical padding, added overflow-hidden for blobs */}
-          {/* Background Blobs - Made more subtle */}
-          <div className="absolute -top-32 left-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl animate-pulse" />
+          {/* Projects Section - (Already improved in previous step, kept the 'clean' version) */}
+          <section id="projects" className="py-20 lg:py-28 relative overflow-hidden">
+            {/* Background Blobs - Made more subtle */}
+            <div className="absolute -top-32 left-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl animate-pulse" />
 
-          <div className="relative z-10">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-12 lg:mb-16 bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text"> {/* Responsive font size, adjusted margin */}
-              Featured Projects
-            </h2>
+            <div className="relative z-10">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-12 lg:mb-16 bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text">
+                Featured Projects
+              </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto px-4"> {/* Increased gap, added horizontal padding for smaller screens */}
-              {/* Assuming 'projects' array and other components like motion.div, Image, Badge, Button are imported */}
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group relative overflow-hidden rounded-xl bg-black/30 border border-purple-900/50 hover:border-purple-600 transition-all h-full shadow-md hover:shadow-lg" /* Removed backdrop-blur, softer hover border, softer shadows */
-                >
-                  {/* IMAGE CONTAINER - Kept h-64 as requested for bigger images */}
-                  <div className="relative h-64 overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                      fill={true}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    {/* Overlay gradient - Kept as is */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto px-4">
+                {projects.map((project, index) => (
+                  <motion.div
+                    key={project.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="group relative overflow-hidden rounded-xl bg-black/30 border border-purple-900/50 hover:border-purple-600 transition-all h-full shadow-md hover:shadow-lg"
+                  >
+                    <div className="relative h-64 overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        fill={true}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+                    </div>
 
-                  <div className="p-6 space-y-4 flex flex-col h-[calc(100%-16rem)]"> {/* Increased padding slightly */}
-                    <h3 className="text-xl lg:text-2xl font-bold text-purple-200"> {/* Responsive font size */}
-                      {project.title}
-                    </h3>
+                    <div className="p-6 space-y-4 flex flex-col h-[calc(100%-16rem)]">
+                      <h3 className="text-xl lg:text-2xl font-bold text-purple-200">
+                        {project.title}
+                      </h3>
 
-                    <p className="text-gray-400 text-base flex-grow leading-relaxed">
-                      {project.description}
-                    </p>
+                      <p className="text-gray-400 text-base flex-grow leading-relaxed">
+                        {project.description}
+                      </p>
 
-                    <div className="space-y-6 pt-2"> {/* Increased vertical space between tech and buttons */}
-                      <div className="flex flex-wrap gap-2"> {/* Keep gap for technologies */}
-                        {project.technologies.map((tech) => (
-                          <Badge
-                            key={tech}
-                            variant="secondary"
-                            className="bg-purple-900/50 text-purple-200 px-2.5 py-0.5 text-xs rounded" /* Slightly smaller, less rounded badges for cleaner look */
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
+                      <div className="space-y-6 pt-2">
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech) => (
+                            <Badge
+                              key={tech}
+                              variant="secondary"
+                              className="bg-purple-900/50 text-purple-200 px-2.5 py-0.5 text-xs rounded"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
 
-                      <div className="flex gap-4">
-                        {project.github && (
-                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1">
-                            <Button variant="outline" size="sm" className="border-purple-800 text-purple-300 hover:bg-purple-900/20 hover:text-purple-100 w-full transition-colors"> {/* Softened outline text color */}
-                              View Code
-                            </Button>
-                          </a>
-                        )}
+                        <div className="flex gap-4">
+                          {project.github && (
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1">
+                              <Button variant="outline" size="sm" className="border-purple-800 text-purple-300 hover:bg-purple-900/20 hover:text-purple-100 w-full transition-colors">
+                                View Code
+                              </Button>
+                            </a>
+                          )}
 
-                        {project.demo && (
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex-1">
-                            <Button variant="default" size="sm" className="bg-purple-600 hover:bg-purple-700 w-full shadow-sm hover:shadow-md transition-shadow"> {/* Softened primary button shadow */}
-                              Live Demo
-                            </Button>
-                          </a>
-                        )}
+                          {project.demo && (
+                            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex-1">
+                              <Button variant="default" size="sm" className="bg-purple-600 hover:bg-purple-700 w-full shadow-sm hover:shadow-md transition-shadow">
+                                Live Demo
+                              </Button>
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
           {/* Experience Section */}
           <section id="experience" className="py-32 relative">
