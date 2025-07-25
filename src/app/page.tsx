@@ -99,7 +99,7 @@ export default function Home() {
       title: "HireLink",
       description: "HireLink is a job board platform built with Next.js, Node.js, and PostgreSQL. It features job listings, company profiles, and search/filter tools to connect employees and job seekers efficiently.",
       technologies: ["Next.js", "Node.js", "PostgreSQL", "TailwindCSS", "Headless UI"],
-      image: "/projects/hirelink.jpeg",
+      image: "/projects/hirelink.png",
       github: "https://github.com/kolnlaviste/HireLink",
       demo: "https://hirelink.vercel.app/",
     }
@@ -289,58 +289,66 @@ export default function Home() {
 
           {/* Projects Section */}
           <section id="projects" className="py-32 relative">
+            {/* Background Blobs - Kept as is */}
             <div className="absolute -top-32 left-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl animate-pulse" />
 
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text">
+              <h2 className="text-4xl font-extrabold text-center mb-16 bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text tracking-tight"> {/* Larger text, bolder, increased bottom margin, tighter tracking */}
                 Featured Projects
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"> {/* Increased gap for more breathing room */}
+                {/* Assuming 'projects' is an array passed as a prop or defined elsewhere */}
+                {/* Assuming 'motion.div', 'Image', 'Badge', 'Button' components are imported/defined */}
                 {projects.map((project, index) => (
                   <motion.div
                     key={project.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="group relative overflow-hidden rounded-xl backdrop-blur-sm bg-black/20 border border-purple-900/50 hover:border-purple-500 transition-all h-full"
+                    className="group relative overflow-hidden rounded-xl backdrop-blur-sm bg-black/20 border border-purple-900/50 hover:border-purple-500 transition-all h-full shadow-lg hover:shadow-xl" // Added subtle shadows
                   >
-                    <div className="relative h-40 overflow-hidden">
+                    {/* IMAGE CONTAINER - Increased Height */}
+                    <div className="relative h-64 overflow-hidden"> {/* Changed h-40 to h-64 for bigger images */}
                       <Image
                         src={project.image}
                         alt={project.title}
+                        // The original classes already make it cover the container and scale on hover
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        fill={true} // Use fill for responsive image and remove w-full h-full
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Optimize for different screen sizes
                       />
+                      {/* Overlay gradient - Kept as is */}
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
                     </div>
 
-                    <div className="p-4 space-y-3 flex flex-col h-[calc(100%-10rem)]">
-                      <h3 className="text-lg font-semibold text-purple-200">
+                    <div className="p-5 space-y-4 flex flex-col h-[calc(100%-16rem)]"> {/* Adjusted padding and space, h-[calc(100%-image_height)] */}
+                      <h3 className="text-xl font-bold text-purple-200"> {/* Larger, bolder title */}
                         {project.title}
                       </h3>
 
-                      <p className="text-gray-400 text-sm flex-grow">
+                      <p className="text-gray-300 text-base flex-grow leading-relaxed"> {/* Slightly lighter gray, larger text, better line height */}
                         {project.description}
                       </p>
 
-                      <div className="space-y-3">
-                        <div className="flex flex-wrap gap-1.5">
+                      <div className="space-y-4 pt-2"> {/* Increased vertical space, slight top padding */}
+                        <div className="flex flex-wrap gap-2"> {/* Slightly increased gap for technologies */}
                           {project.technologies.map((tech) => (
                             <Badge
                               key={tech}
                               variant="secondary"
-                              className="bg-purple-950/50 text-purple-200 text-xs"
+                              className="bg-purple-950/50 text-purple-200 px-3 py-1 text-xs rounded-full" // Added padding and full roundedness for pill shape
                             >
                               {tech}
                             </Badge>
                           ))}
                         </div>
 
-                        <div className="flex gap-3">
+                        <div className="flex gap-4"> {/* Increased gap between buttons */}
                           {project.github && (
                             <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1">
-                              <Button variant="outline" size="sm" className="border-purple-800 hover:bg-purple-900/20 w-full">
+                              <Button variant="outline" size="sm" className="border-purple-800 text-purple-200 hover:bg-purple-900/20 hover:text-purple-100 w-full transition-colors"> {/* Added text color and hover text color */}
                                 View Code
                               </Button>
                             </a>
@@ -348,12 +356,11 @@ export default function Home() {
 
                           {project.demo && (
                             <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex-1">
-                              <Button variant="default" size="sm" className="bg-purple-600 hover:bg-purple-700 w-full">
+                              <Button variant="default" size="sm" className="bg-purple-600 hover:bg-purple-700 w-full shadow-md hover:shadow-lg transition-shadow"> {/* Added subtle shadow to primary button */}
                                 Live Demo
                               </Button>
                             </a>
                           )}
-
                         </div>
                       </div>
                     </div>
