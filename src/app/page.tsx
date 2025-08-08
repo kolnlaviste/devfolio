@@ -103,7 +103,7 @@ export default function Home() {
       title: "Flutter Developer",
       company: "Tekkio",
       period: "2025 - Present",
-      description: "Currently working as a Flutter Developer at Tekkio, contributing to the development of the TekkioHub platform and assisting with the configuration of AnchorLinux."
+      description: "Currently working as a Flutter Developer at Tekkio, contributing to the development of a cross-platform web application and supporting system configuration tasks on a custom Linux-based environment."
     }
   ];
 
