@@ -98,6 +98,12 @@ export default function Home() {
       company: "Elinnov Technologies",
       period: "2024 - 2025",
       description: "Software Engineer Intern at Elinnov Technologies, where I helped build and improve internal web apps, worked with front-end tools like React, and collaborated with the team on real-world development tasks."
+    },
+    {
+      title: "Flutter Developer",
+      company: "Tekkio",
+      period: "2025 - Present",
+      description: "Currently working as a Flutter Developer at Tekkio, contributing to the development of the TekkioHub platform and assisting with the configuration of AnchorLinux."
     }
   ];
 
