@@ -121,7 +121,29 @@ export default function Home() {
       image: "/projects/hirelink.png",
       github: "https://github.com/kolnlaviste/HireLink",
       demo: "https://hirelink.vercel.app/",
-    }
+    },
+    {
+      title: "Moviebrowser",
+      description: "A simple movie browser built with React. It fetches and displays movie data from a public API, demonstrating skills in building dynamic front-end applications and handling API requests.",
+      technologies: ["React","Movie Database"],
+      image: "moviebrowser.png",
+      github: "https://github.com/kolnlaviste/moviebrowser",
+      demo: "https://moviebrowser-wheat.vercel.app",
+    },
+    {
+      title: "Valentines Invitation",
+      description: "A valentines invitation website I created for my girlfriend",
+      technologies: ["Next.js", "Gmail API"],
+      image: "valentines.png",
+      demo: "https://valentines-weld.vercel.app",
+    },
+    {
+      title: "Devfolio",
+      description: "Personal portfolio created to display talents, projects, and information about myself",
+      technologies: ["Next.js", "Tailwind"],
+      image: "devfolio.png",
+      demo: "https://devfolio-koln.vercel.app",
+    },
     // Add more projects as needed
   ];
 
