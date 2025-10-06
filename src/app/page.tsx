@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/header";
 import Footer from "@/components/footer"
-import { useState, useEffect } from 'react'; // Import useEffect
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { Download } from "lucide-react";
 
@@ -23,12 +23,11 @@ type SkillCategories = {
   learning: Skill[];
 };
 
-// Update the Project type to make image required
 type Project = {
   title: string;
   description: string;
   technologies: string[];
-  image: string;   // Changed from optional to required
+  image: string;   
   github?: string;
   demo?: string;
 };
@@ -36,20 +35,17 @@ type Project = {
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<'all' | keyof SkillCategories>('all');
 
-  // New state for the animated job title
+
   const jobTitles = ["Jr. Full Stack Developer", "Frontend Developer", "Web Developer"]; // Add more titles if you like!
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
-  // useEffect to handle the job title animation interval
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
-    }, 3000); // Change title every 3 seconds (3000 milliseconds)
+    }, 3000); 
 
-    // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(interval);
-  }, [jobTitles.length]); // Re-run effect if jobTitles length changes (unlikely, but good practice)
-
+  }, [jobTitles.length]); 
 
   const skills: SkillCategories = {
     languages: [
@@ -96,14 +92,16 @@ export default function Home() {
     {
       title: "Software Engineer Intern",
       company: "Elinnov Technologies",
-      period: "2024 - 2025",
+      employment: 'Internship',
+      period: "October 2024 - February 2025",
       description: "Software Engineer Intern at Elinnov Technologies, where I helped build and improve internal web apps, worked with front-end tools like React, and collaborated with the team on real-world development tasks."
     },
     {
-      title: "Flutter Developer",
+      title: "Software Developer",
       company: "Tekkio",
-      period: "2025 - Present",
-      description: "Currently working as a Flutter Developer at Tekkio, contributing to the development of a cross-platform web application and supporting system configuration tasks on a custom Linux-based environment."
+      employment: 'Contract',
+      period: "August 2025 - October 2025",
+      description: "Worked as a Flutter Developer at Tekkio, contributing to the development of a cross-platform web application and supporting system configuration tasks on a custom Linux-based environment."
     }
   ];
 
@@ -144,7 +142,6 @@ export default function Home() {
       image: "/projects/devfolio.png",
       demo: "https://devfolio-koln.vercel.app",
     },
-    // Add more projects as needed
   ];
 
   const filterButtons = [
@@ -188,11 +185,9 @@ export default function Home() {
     <>
       <Header />
       <main className="min-h-screen bg-black relative overflow-hidden">
-        {/* Global background elements */}
         <div className="fixed inset-0 bg-gradient-to-br from-black via-purple-950/10 to-black pointer-events-none" />
 
         <div className="container mx-auto px-4 relative">
-          {/* Hero Section */}
           <section id="hero" className="h-screen flex items-center justify-center pt-16 relative">
             <div className="absolute top-20 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
@@ -200,14 +195,13 @@ export default function Home() {
               <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text animate-fade-in">
                 Koln Roward Laviste
               </h1>
-              {/* Animated Job Title */}
-              <AnimatePresence mode="wait"> {/* `mode="wait"` ensures one animation finishes before the next starts */}
+              <AnimatePresence mode="wait"> 
                 <motion.h2
-                  key={jobTitles[currentTitleIndex]} // Key is crucial for AnimatePresence to detect content change
-                  initial={{ opacity: 0, y: -10 }} // Start slightly above and invisible
-                  animate={{ opacity: 1, y: 0 }}   // Animate to visible and original position
-                  exit={{ opacity: 0, y: 10 }}     // Exit by fading out and moving slightly down
-                  transition={{ duration: 0.5 }}   // Animation duration
+                  key={jobTitles[currentTitleIndex]} 
+                  initial={{ opacity: 0, y: -10 }} 
+                  animate={{ opacity: 1, y: 0 }}   
+                  exit={{ opacity: 0, y: 10 }}     
+                  transition={{ duration: 0.5 }} 
                   className="text-xl md:text-2xl text-purple-200/80"
                 >
                   {jobTitles[currentTitleIndex]}
@@ -314,7 +308,7 @@ export default function Home() {
                                 src={skill.icon}
                                 alt={skill.name}
                                 className="w-full h-full object-contain filter group-hover:brightness-125 transition-all"
-                                width={48} // Add explicit width and height for Image component
+                                width={48} 
                                 height={48}
                               />
                             </motion.div>
@@ -434,6 +428,7 @@ export default function Home() {
                   >
                     <h3 className="text-xl font-medium text-purple-200">{exp.title}</h3>
                     <p className="text-gray-400">{exp.company}</p>
+                    <p className="text-sm text-purple-400 font-semibold">{exp.employment}</p>
                     <p className="text-sm text-gray-500">{exp.period}</p>
                     <p className="text-gray-400">{exp.description}</p>
                   </motion.div>
