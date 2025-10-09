@@ -121,12 +121,11 @@ export default function Home() {
       demo: "https://hirelink.vercel.app/",
     },
     {
-      title: "Moviebrowser",
-      description: "A simple movie browser built with React. It fetches and displays movie data from a public API, demonstrating skills in building dynamic front-end applications and handling API requests.",
-      technologies: ["React","Movie Database"],
-      image: "/projects/moviebrowser.png",
-      github: "https://github.com/kolnlaviste/moviebrowser",
-      demo: "https://moviebrowser-wheat.vercel.app",
+      title: "pulseboard",
+      description: "A modern analytics SaaS platform that delivers real-time insights, performance tracking, and subscription management through a sleek, dark-themed interface built with Next.js, TypeScript, and Stripe integration.",
+      technologies: ["Next.js", "TypeScript", "TailwindCSS", "shadcn/ui", "Framer Motion", "Stripe"],
+      image: "/projects/pulseboard.png",
+      github: "https://github.com/kolnlaviste/pulseboard",
     },
     {
       title: "Valentines Invitation",
