@@ -126,6 +126,7 @@ export default function Home() {
       technologies: ["Next.js", "TypeScript", "TailwindCSS", "shadcn/ui", "Framer Motion", "Stripe"],
       image: "/projects/pulseboard.png",
       github: "https://github.com/kolnlaviste/pulseboard",
+      demo: 'https://pulseboard-demo.vercel.app',
     },
     {
       title: "Valentines Invitation",
