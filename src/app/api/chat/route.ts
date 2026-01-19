@@ -26,7 +26,13 @@ export async function POST(req: Request) {
 console.log("🔍 Search Results:", documents);
 if (rpcError) console.error("❌ RPC Error:", rpcError);
 
-    const context = documents?.map((d: any) => d.content).join("\n\n") || "No specific background info found.";
+    interface BioSection {
+      id: number;
+      content: string;
+      similarity: number;
+    }
+
+    const context = (documents as BioSection[] | null)?.map((d) => d.content).join("\n\n") || "No specific background info found.";
 
     // Use Groq's Llama 3 (Fast and Free)
     const model = new ChatGroq({
@@ -50,7 +56,8 @@ if (rpcError) console.error("❌ RPC Error:", rpcError);
 ]);
 
     return Response.json({ role: "assistant", content: response.content });
-  } catch (error: any) {
-    return Response.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "An unknown error occurred";
+    return Response.json({ error: message }, { status: 500 });
   }
 }
