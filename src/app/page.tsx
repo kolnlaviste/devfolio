@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/header";
 import Footer from "@/components/footer"
+import ChatBubble from "@/components/ChatBubble";
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { Download } from "lucide-react";
@@ -239,6 +240,8 @@ export default function Home() {
               </div>
             </div>
           </section>
+
+          <ChatBubble />
 
           {/* Skills Section */}
           <section id="skills" className="py-20 lg:py-28 relative">
