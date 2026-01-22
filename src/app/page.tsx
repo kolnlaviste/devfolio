@@ -137,6 +137,14 @@ export default function Home() {
       demo: "https://valentines-weld.vercel.app",
     },
     {
+      title: "Vault AI",
+      description: "VaultAI is a high-performance financial dashboard built with Next.js 15 and Supabase. It transforms raw CSV transaction data into real-time visual insights, featuring an AI-powered ledger, dynamic spending analytics, and secure, encrypted data management.",
+      technologies: ["Next.js", "Supabase", "TailwindCSS", "Lucide React"],
+      image: "/projects/vault-ai.png",
+      github: "github.com/kolnlaviste/Vault-AI",
+      demo: "https://vault-ai-demo.vercel.app",
+    },
+    {
       title: "Devfolio",
       description: "Personal portfolio created to display talents, projects, and information about myself",
       technologies: ["Next.js", "Tailwind"],
