@@ -145,9 +145,37 @@ export default function Home() {
       demo: "https://vault-ai-demo.vercel.app",
     },
     {
+      title: "G14 Pulse",
+      description: "A real-time hardware monitoring ecosystem designed for the ASUS ROG Zephyrus G14. It uses a Python background agent to capture live system metrics (CPU, RAM, Battery) and streams them to a Flutter mobile dashboard via Supabase Realtime (WebSockets).",
+      technologies: [
+  "Flutter",
+  "Dart",
+  "Supabase",
+  "PostgreSQL",
+  "Python",
+  "psutil",
+  "WebSockets",
+  "Row-Level Security (RLS)",
+  "Syncfusion Gauges"
+],
+      image: "/projects/g14-monitor.png",
+      github: "https://github.com/kolnlaviste/g14-monitor-project",
+    },
+    {
       title: "Devfolio",
       description: "Personal portfolio created to display talents, projects, and information about myself",
-      technologies: ["Next.js", "Tailwind"],
+      technologies: [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "OpenAI API (ChatGPT SDK)",
+  "Vercel AI SDK",
+  "Framer Motion",
+  "Lucide React",
+  "Shadcn UI",
+  "Server-Sent Events (SSE)"
+],
       image: "/projects/devfolio.png",
       demo: "https://devfolio-koln.vercel.app",
     },
