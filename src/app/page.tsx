@@ -28,7 +28,7 @@ type Project = {
   title: string;
   description: string;
   technologies: string[];
-  image: string;   
+  image: string;
   github?: string;
   demo?: string;
 };
@@ -43,10 +43,10 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
-    }, 3000); 
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [jobTitles.length]); 
+  }, [jobTitles.length]);
 
   const skills: SkillCategories = {
     languages: [
@@ -148,16 +148,16 @@ export default function Home() {
       title: "G14 Pulse",
       description: "A real-time hardware monitoring ecosystem designed for the ASUS ROG Zephyrus G14. It uses a Python background agent to capture live system metrics (CPU, RAM, Battery) and streams them to a Flutter mobile dashboard via Supabase Realtime (WebSockets).",
       technologies: [
-  "Flutter",
-  "Dart",
-  "Supabase",
-  "PostgreSQL",
-  "Python",
-  "psutil",
-  "WebSockets",
-  "Row-Level Security (RLS)",
-  "Syncfusion Gauges"
-],
+        "Flutter",
+        "Dart",
+        "Supabase",
+        "PostgreSQL",
+        "Python",
+        "psutil",
+        "WebSockets",
+        "Row-Level Security (RLS)",
+        "Syncfusion Gauges"
+      ],
       image: "/projects/g14-monitor.png",
       github: "https://github.com/kolnlaviste/g14-monitor-project",
     },
@@ -165,18 +165,19 @@ export default function Home() {
       title: "Devfolio",
       description: "Personal portfolio created to display talents, projects, and information about myself",
       technologies: [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Tailwind CSS",
-  "OpenAI API (ChatGPT SDK)",
-  "Vercel AI SDK",
-  "Framer Motion",
-  "Lucide React",
-  "Shadcn UI",
-  "Server-Sent Events (SSE)"
-],
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "OpenAI API (ChatGPT SDK)",
+        "Vercel AI SDK",
+        "Framer Motion",
+        "Lucide React",
+        "Shadcn UI",
+        "Server-Sent Events (SSE)"
+      ],
       image: "/projects/devfolio.png",
+      github: "https://github.com/kolnlaviste/devfolio",
       demo: "https://devfolio-koln.vercel.app",
     },
   ];
@@ -232,13 +233,13 @@ export default function Home() {
               <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-purple-300 text-transparent bg-clip-text animate-fade-in">
                 Koln Roward Laviste
               </h1>
-              <AnimatePresence mode="wait"> 
+              <AnimatePresence mode="wait">
                 <motion.h2
-                  key={jobTitles[currentTitleIndex]} 
-                  initial={{ opacity: 0, y: -10 }} 
-                  animate={{ opacity: 1, y: 0 }}   
-                  exit={{ opacity: 0, y: 10 }}     
-                  transition={{ duration: 0.5 }} 
+                  key={jobTitles[currentTitleIndex]}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.5 }}
                   className="text-xl md:text-2xl text-purple-200/80"
                 >
                   {jobTitles[currentTitleIndex]}
@@ -347,7 +348,7 @@ export default function Home() {
                                 src={skill.icon}
                                 alt={skill.name}
                                 className="w-full h-full object-contain filter group-hover:brightness-125 transition-all"
-                                width={48} 
+                                width={48}
                                 height={48}
                               />
                             </motion.div>
