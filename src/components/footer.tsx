@@ -1,43 +1,39 @@
-import { Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
+"use client";
 
-const Footer = () => {
+import Link from "next/link";
+import { ArrowUp } from "lucide-react";
+
+export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="w-full border-t border-muted mt-20 py-8 px-4 text-sm text-muted-foreground bg-background">
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-center sm:text-left">
-          © {new Date().getFullYear()} Koln Laviste. All rights reserved.
-        </p>
-        <div className="flex gap-4">
-          <Link
-            href="mailto:roward18@gmail.com"
-            className="hover:text-foreground transition-colors"
-            aria-label="Email"
+    <footer className="border-t border-stone-200 dark:border-[#404040] bg-white dark:bg-[#0a0a0a] py-12 transition-colors">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          {/* Left - Copyright */}
+          <div className="text-center sm:text-left">
+            <p className="text-stone-600 dark:text-[#b0b0b0] text-sm">
+              Designed & built by Koln Laviste
+            </p>
+            <p className="text-stone-400 dark:text-stone-600 text-xs mt-1">
+              © {currentYear} All rights reserved.
+            </p>
+          </div>
+
+          {/* Right - Back to Top */}
+          <button
+            onClick={scrollToTop}
+            className="p-2 bg-stone-100 dark:bg-[#2a2a2a] hover:bg-indigo-600 dark:hover:bg-indigo-500 text-stone-700 dark:text-[#f0f0f0] hover:text-white rounded-full transition-colors"
+            aria-label="Back to top"
           >
-            <Mail className="w-5 h-5" />
-          </Link>
-          <Link
-            href="https://github.com/kolnlaviste"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-            aria-label="GitHub"
-          >
-            <Github className="w-5 h-5" />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/koln-laviste"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin className="w-5 h-5" />
-          </Link>
+            <ArrowUp size={20} />
+          </button>
         </div>
       </div>
     </footer>
   );
 }
-
-export default Footer;
